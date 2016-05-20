@@ -1,0 +1,91 @@
+<div ng-controller="transductorCtrl">
+	<div class="row">
+		<div class="col-sm-6">
+			<button type="button" class="btn btn-default" ng-click="newTransductor()">Novo</button>
+		</div>
+		<div class="col-sm-6">
+		  <ul class="pagination pull-right">
+		    <li>
+		      <a href="#" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    <li><a href="#">1</a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		    <li>
+		      <a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+		</div>
+	</div>
+	<div class="row row-top">
+		<div class="col-sm-12">
+			<table class="table table-bordered table-condensed">
+				<thead>
+					<tr>
+						<th>Id Name</th>
+						<th class="text-center" style="width: 80px">Min Value</th>
+						<th class="text-center" style="width: 85px">Max Value</th>
+						<th class="text-center" style="width: 90px">Type</th>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="obj in transductors">
+						<td>[[obj.idName]]</td>
+						<td class="text-center" style="width: 80px">[[obj.minValue]]</td>
+						<td class="text-center" style="width: 85px">[[obj.maxValue]]</td>
+						<td class="text-center" style="width: 90px">[[obj.transductorType]]</td>
+						<td>[[obj.idName]]</td>
+						<td>[[obj.description]]</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div id="modal" class="modal fade" tabindex="-1" role="dialog">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-body">
+	      	<form>
+					  <div class="form-group">
+					    <label>Id Name</label>
+					    <input type="text" class="form-control" placeholder="Id Name">
+					  </div>
+					  <div class="form-group">
+					    <label>Min Value</label>
+					    <input type="text" class="form-control" placeholder="Min Value">
+					  </div>
+					  <div class="form-group">
+					    <label>Max Value</label>
+					    <input type="text" class="form-control" placeholder="Max Value">
+					  </div>
+					  <div class="form-group">
+					    <label>Type</label>
+					    <input type="text" class="form-control" placeholder="Type">
+					  </div>
+					  <div class="form-group">
+					    <label>Name</label>
+					    <input type="text" class="form-control" placeholder="Name">
+					  </div>
+					  <div class="form-group">
+					    <label>Description</label>
+					    <input type="text" class="form-control" placeholder="Description">
+					  </div>
+					</form>
+	      </div>
+	      <div class="modal-footer">
+	      	<button type="button" class="btn btn-primary">Salvar</button>
+	        <button type="button" class="btn btn-default" ng-click="closeModal()">Fechar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>

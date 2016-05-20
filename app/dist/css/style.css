@@ -1,0 +1,27 @@
+.container-view{
+	margin-top: 65px;
+}
+
+.navbar-right{
+	margin-right: 15px;
+}
+
+#logo-menu{
+  margin-top: -9px;
+  margin-left: -5px;
+}
+
+.row-top{
+	margin-top: 15px;
+}
+
+.pagination{
+	margin: 0px;
+}
+
+#footer {
+	width: 100%;
+  bottom: 0;
+  margin-bottom: 10px;
+  position: fixed;
+}
