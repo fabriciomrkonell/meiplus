@@ -2,7 +2,7 @@
 
 	'use strict';
 
-	angular.module('Sensul.config').config(['$interpolateProvider', function($interpolateProvider) {
+	angular.module('MEIPlus.config').config(['$interpolateProvider', function($interpolateProvider) {
 
  		$interpolateProvider.startSymbol('[[');
   	$interpolateProvider.endSymbol(']]');

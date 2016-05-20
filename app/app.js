@@ -1,13 +1,13 @@
 'use strict'
 
-angular.module('Sensul.controllers', []);
+angular.module('MEIPlus.controllers', []);
 
-angular.module('Sensul.services', []);
+angular.module('MEIPlus.services', []);
 
-angular.module('Sensul.config', []);
+angular.module('MEIPlus.config', []);
 
-angular.module('Sensul', ['Sensul.controllers', 'Sensul.services', 'Sensul.config']);
+angular.module('MEIPlus', ['MEIPlus.controllers', 'MEIPlus.services', 'MEIPlus.config']);
 
 angular.element(document).ready(function() {
-	angular.bootstrap(document, ['Sensul']);
+	angular.bootstrap(document, ['MEIPlus']);
 });

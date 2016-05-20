@@ -2,7 +2,7 @@
 
 	'use strict';
 
-	angular.module('Sensul.controllers').controller('indexCtrl', indexCtrl);
+	angular.module('MEIPlus.controllers').controller('menuCtrl', indexCtrl);
 
 	indexCtrl.$inject = ['$scope'];
 
