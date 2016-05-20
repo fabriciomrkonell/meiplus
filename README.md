@@ -1,2 +1,1 @@
-# meiplus
-Software MEI Plus
+Software MEI Plus.
