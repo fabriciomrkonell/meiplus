@@ -3,7 +3,17 @@
 var express = require('express'),
 		router = express.Router(),
 		passport = require('passport'),
-		User = require('../models/user');
+		User = require('../models/user'),
+		service = require('../services/service');
+
+
+router.get('/', service.isAutenticate, function(req, res, next) {
+  res.render('layouts/default', {
+  	title: 'Menu',
+  	page: '../menu.html',
+  	requiresJS: ['app/controllers/menu']
+  });
+});
 
 router.get('/login', function(req, res, next) {
   res.render('layouts/login', {
@@ -17,7 +27,7 @@ router.post('/login', function(req, res, next) {
     if (!user) { return res.redirect('/login'); }
     req.logIn(user, function(err) {
       if (err) { return next(err); }
-      return res.redirect('/home');
+      return res.redirect('/');
     });
   })(req, res, next);
 });
@@ -30,7 +40,7 @@ router.post('/register', function(req, res) {
     	res.redirect('/login');
     }
     passport.authenticate('local')(req, res, function () {
-      res.redirect('/home');
+      res.redirect('/');
     });
   });
 });
