@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+ <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/dist/images/favicon.ico">
+    <link rel="mask-icon" href="/dist/images/favicon.ico" color="black">
+    <title>MEI Plus - {{title}}</title>
+    <link rel="stylesheet" type="text/css" href="app/libraries/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="app/dist/css/login.css">
+  </head>
+  <body>
+    <div class="container">
+      <form class="form-signin" method="POST" action="/login">
+        <h2 class="text-center">MEI Plus</h2>
+        <label class="sr-only">Email address</label>
+        <input type="email" class="form-control" placeholder="Email" required="" autofocus="" name="username">
+        <label class="sr-only">Password</label>
+        <input type="password" class="form-control" placeholder="Senha" required="" name="password">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+      </form>
+    </div>
+  </body>
+</html>

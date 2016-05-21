@@ -9,9 +9,11 @@ var express = require('express'),
     mongoose = require('./config/database'),
    	passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
+    service = require('./services/service'),
     User = require('./models/user');
 
 var routes = require('./routes/index'),
+		routes_home = require('./routes/home'),
     app = express();
 
 // Configuration
@@ -41,5 +43,6 @@ app.set('view cache', true);
 swig.setDefaults({ cache: false });
 
 app.use('/', routes);
+app.use('/home', service.isAutenticate, routes_home)
 
 module.exports = app;
