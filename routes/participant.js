@@ -31,8 +31,12 @@ router.post('/', function(req, res, next) {
     participant.neighborhood = req.body.neighborhood;
     participant.number = req.body.number;
     participant.city = req.body.city;
-    participant.save(function(){
-      res.send({ error: 0, data: participant, message: 'Salvo!' });
+    participant.save(function(err){
+      if(err){
+        res.send({ error: 1, message: err.errors });
+      }else{
+        res.send({ error: 0, data: participant, message: 'Salvo!' });
+      }
     });
   });
 });

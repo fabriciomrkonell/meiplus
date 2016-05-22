@@ -11,6 +11,15 @@ angular.module('MEIPlus', ['MEIPlus.controllers', 'MEIPlus.services', 'MEIPlus.c
 angular.module('MEIPlus').run(['$rootScope', '$timeout', function($rootScope, $timeout){
 
 	$rootScope.message = undefined;
+	$rootScope.errors = {};
+
+	$rootScope.getError = function(err){
+		return $rootScope.errors[err];
+	};
+
+	$rootScope.clearError = function(){
+		$rootScope.errors = {};
+	};
 
 	$rootScope.setMessage = function(message){
 		$rootScope.message = message;

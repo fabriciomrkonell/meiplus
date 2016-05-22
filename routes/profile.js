@@ -21,8 +21,12 @@ router.post('/profile', function(req, res, next) {
     user.neighborhood = req.body.neighborhood;
     user.number = req.body.number;
     user.city = req.body.city;
-    user.save(function(){
-      res.send({ error: 0, data: user, message: 'Salvo!' });
+    user.save(function(err){
+      if(err){
+        res.send({ error: 1, message: err });
+      }else{
+        res.send({ error: 0, data: user, message: 'Salvo!' });
+      }
     });
   });
 });
