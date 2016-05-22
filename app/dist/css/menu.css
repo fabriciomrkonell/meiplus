@@ -1,0 +1,27 @@
+.container .text-muted {
+	margin: 5px 0 0 0;
+}
+
+.panel-body-menu{
+	padding: 10px;
+	font-size: 17px;
+}
+
+.panel-heading-menu{
+	padding: 5px 0px 0px 0px;
+	border-top-left-radius: 0px;
+   	border-top-right-radius: 0px;
+}
+
+.panel-default-menu{
+	box-shadow: 3px 3px 10px 0px #ddd;
+	cursor: pointer;
+	border-top-left-radius: 0px;
+   	border-top-right-radius: 0px;
+}
+
+.link-menu,.link-menu:hover,.link-menu:active{
+	text-decoration: none;
+	color: #333;
+	cursor: default;
+}

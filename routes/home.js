@@ -11,4 +11,12 @@ router.get('/perfil', function(req, res, next) {
   });
 });
 
+router.get('/participantes', function(req, res, next) {
+  res.render('layouts/default', {
+  	title: 'Participantes',
+  	page: '../participant.html',
+  	requiresJS: ['app/controllers/participant']
+  });
+});
+
 module.exports = router;

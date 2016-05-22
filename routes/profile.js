@@ -5,20 +5,14 @@ var express = require('express'),
     User = require('../models/user'),
     service = require('../services/service');
 
-router.post('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
   User.findById(req.user._id, function(err, user) {
-    if(err){
-      res.send({ error: 1, message: err });
-    }
     res.send({ error: 0, data: user });
   });
 });
 
 router.post('/profile', function(req, res, next) {
   User.findById(req.user._id, function(err, user) {
-    if(err || user === undefined){
-      res.send({ error: 1, message: err });
-    }
     user.name = req.body.name;
     user.cnpj = req.body.cnpj;
     user.phone = req.body.phone;

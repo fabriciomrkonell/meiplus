@@ -1,0 +1,116 @@
+<link rel="stylesheet" type="text/css" href="app/dist/css/participant.css">
+<div ng-controller="participantCtrl">
+	<div class="col-sm-9">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		  	<span>Fornecedores/Clientes</span>
+		  	<button type="button" class="btn btn-primary" ng-click="saveParticipant(data)">
+		  		<i class="glyphicon glyphicon-ok"></i>&nbsp;
+		  		Salvar
+		  	</button>
+		  	<button type="button" class="btn btn-primary" ng-click="searchParticipants()" style="margin-right: 10px">
+		  		<i class="glyphicon glyphicon-search"></i>&nbsp;
+		  		Pesquisar
+		  	</button>
+		  	<button type="button" class="btn btn-primary" ng-click="clear()" style="margin-right: 10px">
+		  		<i class="glyphicon glyphicon-plus"></i>&nbsp;
+		  		Novo
+		  	</button>
+		  </div>
+		  <div class="panel-body panel-no-padding-bottom">
+		    <form>
+		    	<div class="row">
+			    	<div class="col-sm-4">
+							<div class="form-group">
+					    	<label>Nome</label>
+					    	<input type="text" class="form-control" placeholder="Nome" ng-model="data.name">
+							</div>
+							<div class="form-group">
+						    <label>Apelido</label>
+						    <input type="text" class="form-control" placeholder="Apelido" ng-model="data.nickname">
+						  </div>
+							<div class="form-group">
+						    <label>Email</label>
+						    <input type="email" class="form-control" placeholder="Email" ng-model="data.email">
+						  </div>
+						  <div class="form-group">
+						    <label>Telefone</label>
+						    <input type="text" class="form-control" placeholder="Telefone" ng-model="data.phone" mask="(99) 9999-9999">
+						  </div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+						    <label>CNPJ</label>
+						    <input type="text" class="form-control" placeholder="CNPJ" ng-model="data.cnpj" mask="99.999.999/9999-99">
+						  </div>
+							<div class="form-group">
+					    	<label>Inscrição estadual</label>
+					    	<input type="text" class="form-control" placeholder="Inscrição estadual" ng-model="data.stateRegistration">
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+						    <label>CEP</label>
+						    <input type="text" class="form-control" placeholder="CEP" ng-model="data.cep" mask="99999-999">
+						  </div>
+							<div class="form-group">
+					    	<label>Rua</label>
+					    	<input type="text" class="form-control" placeholder="Rua" ng-model="data.street">
+							</div>
+							 <div class="form-group">
+						    <label>Número</label>
+						    <input type="text" class="form-control" placeholder="Número" ng-model="data.number">
+						  </div>
+							<div class="form-group">
+						    <label>Bairro</label>
+						    <input type="text" class="form-control" placeholder="Bairro" ng-model="data.neighborhood">
+						  </div>
+						  <div class="form-group" ng-model="data.city">
+						    <label>Cidade</label>
+						    <select class="form-control" ng-model="data.city">
+						    	<option value="Jaraguá do Sul">Jaraguá do Sul</option>
+						    	<option value="Schroeder">Schroeder</option>
+						    </select>
+						 	</div>
+						</div>
+					</div>
+				</form>
+		  </div>
+		</div>
+	</div>
+	<div class="modal fade" tabindex="-1" role="dialog" id="modalParticipants">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Fornecedores/Clientes</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<input type="text" class="form-control" placeholder="Pesquisar" style="width: 300px" ng-model="modal.filter">
+	      	<br>
+	        <table class="table table-bordered table-condensed">
+	        	<thead>
+	        		<tr>
+	        			<th>Nome</th>
+	        			<th class="text-center" width="150px">Cidade</th>
+	        			<th class="text-center" width="80px">Ações</th>
+	        		</tr>
+	        	</thead>
+	        	<tbody>
+	        		<tr dir-paginate="participant in participants | filter: modal.filter | itemsPerPage: '5'">
+	        			<td>[[participant.name]]</td>
+	        			<td class="text-center" width="150px">[[participant.city]]</td>
+	        			<td class="text-center" width="80px">
+	        				<button type="button" class="btn btn-primary btn-xs" ng-click="editParticipant(participant)">Editar</button>
+	        			</td>
+	        		</tr>
+	        	</tbody>
+	        </table>
+	        <div class="text-center">
+	        	<dir-pagination-controls template-url="app/templates/pagination.html"></dir-pagination-controls>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>

@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('MEIPlus.controllers', ['ngMask']);
+angular.module('MEIPlus.controllers', ['ngMask', 'angularUtils.directives.dirPagination']);
 
 angular.module('MEIPlus.services', []);
 

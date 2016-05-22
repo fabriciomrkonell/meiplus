@@ -10,7 +10,7 @@
 
 		$scope.data = {};
 
-		$http.post('/app/perfil').success(function(data){
+		$http.get('/app/perfil').success(function(data){
 			$scope.data = data.data;
 		});
 
