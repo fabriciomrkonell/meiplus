@@ -6,7 +6,6 @@ var express = require('express'),
 		User = require('../models/user'),
 		service = require('../services/service');
 
-
 router.get('/', service.isAutenticate, function(req, res, next) {
   res.render('layouts/default', {
   	title: 'Menu',
