@@ -1,0 +1,85 @@
+<link rel="stylesheet" type="text/css" href="app/dist/css/profile.css">
+<div ng-controller="profileCtrl">
+	<div class="col-sm-3">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		  	<span>Cadastro</span>
+		  	<button type="submit" class="btn btn-default" ng-click="saveRegister(data)">Salvar</button>
+		  </div>
+		  <div class="panel-body panel-no-padding-bottom">
+		    <form>
+					<div class="form-group">
+			    	<label>Nome</label>
+			    	<input type="text" class="form-control" placeholder="Nome" ng-model="data.name">
+					</div>
+					<div class="form-group">
+				    <label>CNPJ</label>
+				    <input type="text" class="form-control" placeholder="CNPJ" ng-model="data.cnpj">
+				  </div>
+					<div class="form-group">
+				    <label>Email</label>
+				    <input type="text" class="form-control" disabled="true" ng-model="data.username">
+				  </div>
+				  <div class="form-group">
+				    <label>Telefone</label>
+				    <input type="text" class="form-control" placeholder="Telefone" ng-model="data.phone">
+				  </div>
+				</form>
+		  </div>
+		</div>
+	</div>
+	<div class="col-sm-3">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		  	<span>Endereço</span>
+		  	<button type="submit" class="btn btn-default">Salvar</button>
+		  </div>
+		  <div class="panel-body panel-no-padding-bottom">
+		    <form>
+		    	<div class="form-group">
+				    <label>CEP</label>
+				    <input type="text" class="form-control" placeholder="CEP" ng-model="data.cep">
+				  </div>
+					<div class="form-group">
+			    	<label>Rua</label>
+			    	<input type="text" class="form-control" placeholder="Rua" ng-model="data.street">
+					</div>
+					<div class="form-group">
+				    <label for="exampleInputPassword1">Bairro</label>
+				    <input type="text" class="form-control" placeholder="Bairro" ng-model="data.neighborhood">
+				  </div>
+				  <div class="form-group">
+				    <label>Número</label>
+				    <input type="text" class="form-control" placeholder="Número" ng-model="data.number">
+				  </div>
+				  <div class="form-group">
+				    <label>Cidade</label>
+				    <select class="form-control">
+				    	<option value="Schroeder">Schroeder</option>
+				    </select>
+				  </div>
+				</form>
+		  </div>
+		</div>
+	</div>
+	<div class="col-sm-3">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		  	<span>Senha</span>
+		  	<button type="submit" class="btn btn-default">Salvar</button>
+		  </div>
+		  <div class="panel-body panel-no-padding-bottom">
+		    <form>
+					<div class="form-group">
+			    	<label>Senha atual</label>
+			    	<input type="password" class="form-control" placeholder="Senha atual" ng-model="data.password">
+					</div>
+					<div class="form-group">
+				    <label>Senha nova</label>
+				    <input type="password" class="form-control" placeholder="Senha nova" ng-model="data.newPassword">
+				  </div>
+				</form>
+		  </div>
+		</div>
+	</div>
+</div>

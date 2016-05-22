@@ -13,6 +13,8 @@ var express = require('express'),
     User = require('./models/user');
 
 var routes = require('./routes/index'),
+		routes_home = require('./routes/home'),
+		routes_profile = require('./routes/profile'),
     app = express();
 
 // Configuration
@@ -42,5 +44,7 @@ app.set('view cache', true);
 swig.setDefaults({ cache: false });
 
 app.use('/', routes);
+app.use('/', service.isAutenticate, routes_home);
+app.use('/app/perfil', service.isAutenticate, routes_profile);
 
 module.exports = app;

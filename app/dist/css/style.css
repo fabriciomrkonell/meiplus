@@ -25,3 +25,16 @@
   margin-bottom: 0px;
   position: fixed;
 }
+
+#messages {
+	width: 100%;
+  bottom: 0;
+  margin-bottom: 0px;
+  position: fixed;
+}
+
+.alert{
+	text-align: center;
+  margin-right: 25%;
+  margin-left: 25%;
+}

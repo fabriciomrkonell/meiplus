@@ -1,0 +1,16 @@
+.panel-no-padding-bottom{
+  padding: 15px 15px 0px 15px;
+}
+
+.panel-heading{
+	height: 56px;
+}
+
+.panel-heading .btn{
+	float: right;
+}
+
+.panel-heading span{
+	margin-top: 9px;
+  display: inline-flex;
+}
