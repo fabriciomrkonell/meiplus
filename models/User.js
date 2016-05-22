@@ -6,14 +6,14 @@ var mongoose = require('mongoose'),
 
 var User = new Schema({
 	name: String,
-	cnpj: Number,
+	cnpj: String,
  	username: String,
   password: String,
-  phone: Number,
-  cep: Number,
+  phone: String,
+  cep: String,
   street: String,
   neighborhood: String,
-  number: Number,
+  number: String,
   city: String
 });
 

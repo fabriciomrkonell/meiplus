@@ -14,18 +14,17 @@
 			$scope.data = data.data;
 		});
 
-		$scope.saveRegister = function(profile){
-			$http.post('/app/perfil/register', profile).success(function(data){
-				$rootScope.messageSuccess = data.message;
+		$scope.saveProfile = function(profile){
+			$http.post('/app/perfil/profile', profile).success(function(data){
+				$rootScope.setMessage(data.message);
 			});
 		};
 
-		$scope.saveAddress = function(){
-
-		};
-
-		$scope.savePassword = function(){
-
+		$scope.savePassword = function(profile){
+			$http.post('/app/perfil/password', profile).success(function(data){
+				$rootScope.setMessage(data.message);
+				$scope.data.password = '';
+			});
 		};
 
   }

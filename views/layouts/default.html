@@ -19,5 +19,13 @@
       <script src="{{js}}.js"></script>
     {% endfor %}
 
+    <div class="app-loading">
+      <div class="animated-container" ng-class="{ 'app-loader-hide': message === undefined }">
+        <div class="messaging">
+          <h1>[[message]]</h1>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>

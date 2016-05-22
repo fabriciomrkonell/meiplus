@@ -7,5 +7,8 @@ module.exports = {
 		}else{
 			res.redirect('/login');
 		}
+	},
+	isNullOrEmpty: function(a){
+  	return (a == null) || (a == "") || !!(a.match(/^\s+$/));
 	}
 };
