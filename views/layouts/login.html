@@ -15,11 +15,60 @@
       <form class="form-signin" method="POST" action="/login">
         <h2 class="text-center">MEI Plus</h2>
         <label class="sr-only">Email</label>
-        <input type="email" class="form-control" placeholder="Email" required="" autofocus="" name="username" value="me@fabricioronchi.com">
+        <input type="text" class="form-control" placeholder="Email" required="" autofocus="" name="username" id="username">
         <label class="sr-only">Senha</label>
-        <input type="password" class="form-control" placeholder="Senha" required="" name="password" value="fabricio">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+        <input type="password" class="form-control" placeholder="Senha" required="" name="password" id="password">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="check"> Salvar email e senha
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="login()">Entrar</button>
       </form>
     </div>
+    <script type="text/javascript">
+
+    var username = document.getElementById('username'),
+        password = document.getElementById('password'),
+        check = document.getElementById('check');
+
+    function login(){
+      setCookie('check', check.checked);
+      if(check.checked){
+        setCookie('username', username.value);
+        setCookie('password', password.value);
+      }else{
+        setCookie('username', '');
+        setCookie('password', '');
+      }
+    }
+
+    username.value = getCookie('username');
+    password.value = getCookie('password');
+    check.checked = getCookie('check') === 'true';
+
+    function setCookie(cname, cvalue) {
+      var d = new Date();
+      d.setTime(d.getTime() + (365*24*60*60*1000));
+      var expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + "; " + expires;
+    }
+
+    function getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(';');
+      for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length,c.length);
+        }
+      }
+      return '';
+    }
+
+    </script>
   </body>
 </html>
