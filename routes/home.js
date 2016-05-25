@@ -19,4 +19,12 @@ router.get('/participantes', function(req, res, next) {
   });
 });
 
+router.get('/produtos', function(req, res, next) {
+  res.render('layouts/default', {
+    title: 'Produtos',
+    page: '../product.html',
+    requiresJS: ['app/controllers/product']
+  });
+});
+
 module.exports = router;

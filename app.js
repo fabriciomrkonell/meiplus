@@ -16,6 +16,7 @@ var routes = require('./routes/index'),
 		routes_home = require('./routes/home'),
 		routes_profile = require('./routes/profile'),
     routes_participant = require('./routes/participant'),
+    routes_product = require('./routes/product'),
     app = express();
 
 // Configuration
@@ -48,5 +49,6 @@ app.use('/', routes);
 app.use('/', service.isAutenticate, routes_home);
 app.use('/app/perfil', service.isAutenticate, routes_profile);
 app.use('/app/participant', service.isAutenticate, routes_participant);
+app.use('/app/product', service.isAutenticate, routes_product);
 
 module.exports = app;

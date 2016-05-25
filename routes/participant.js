@@ -13,6 +13,14 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/select', function(req, res, next) {
+  Participant.find({
+    userId: req.user._id
+  }).select('_id name').exec(function(err, participants) {
+    res.send({ error: 0, data: participants });
+  });
+});
+
 router.post('/', function(req, res, next) {
   Participant.findById(req.body._id, function(err, participant) {
     if(participant === null){

@@ -1,0 +1,159 @@
+<link rel="stylesheet" type="text/css" href="app/dist/css/product.css">
+<div ng-controller="productCtrl">
+	<div class="col-sm-12">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		  	<span>Produtos</span>
+		  	<button type="button" class="btn btn-primary" ng-click="saveProduct(data)">
+		  		<i class="glyphicon glyphicon-ok"></i>&nbsp;
+		  		Salvar
+		  	</button>
+		  	<button type="button" class="btn btn-primary" ng-click="searchProducts()" style="margin-right: 10px">
+		  		<i class="glyphicon glyphicon-search"></i>&nbsp;
+		  		Pesquisar
+		  	</button>
+		  	<button type="button" class="btn btn-primary" ng-click="clear()" style="margin-right: 10px">
+		  		<i class="glyphicon glyphicon-plus"></i>&nbsp;
+		  		Novo
+		  	</button>
+		  </div>
+		  <div class="panel-body panel-no-padding-bottom">
+		    <form>
+		    	<div class="row">
+			    	<div class="col-sm-3">
+							<div class="form-group" ng-class="{ 'has-error': getError('name') }">
+					    	<label class="control-label">Nome</label>
+					    	<input type="text" class="form-control" placeholder="Nome" ng-model="data.name">
+							</div>
+							<div class="form-group" ng-class="{ 'has-error': getError('description') }">
+						    <label class="control-label">Descrição</label>
+						    <input type="text" class="form-control" placeholder="Descrição" ng-model="data.description">
+						  </div>
+							<div class="form-group" ng-class="{ 'has-error': getError('descriptionReduced') }">
+						    <label class="control-label">Descrição reduzida</label>
+						    <input type="text" class="form-control" placeholder="Descrição reduzida" ng-model="data.descriptionReduced">
+						  </div>
+						  <div class="form-group" ng-class="{ 'has-error': getError('barCode') }">
+						    <label class="control-label">Código de barras</label>
+						    <input type="text" class="form-control" placeholder="Código de barras" ng-model="data.barCode">
+						  </div>
+						  <div class="form-group" ng-class="{ 'has-error': getError('participantId') }">
+						    <label class="control-label">Fornecedor/Cliente</label>
+						    <select class="form-control" ng-model="data.participantId">
+						    	<option ng-repeat="participant in participants" value="[[participant._id]]">[[participant.name]]</option>
+						    </select>
+						  </div>
+						</div>
+						<div class="col-sm-3">
+							<div class="form-group" ng-class="{ 'has-error': getError('promotion') }">
+						    <label class="control-label">Promoção</label>
+						    <select class="form-control" ng-model="data.promotion">
+						    	<option value="true">Sim</option>
+						    	<option value="false">Não</option>
+						    </select>
+						  </div>
+							<div class="form-group" ng-class="{ 'has-error': getError('pricePromotion') }">
+					    	<label class="control-label">Valor promoção</label>
+					    	<input type="text" class="form-control" placeholder="Valor promoção" ng-model="data.pricePromotion">
+							</div>
+							<div class="form-group" ng-class="{ 'has-error': getError('pricePromotion') }">
+					    	<label class="control-label">Validade promoção</label>
+					    	<input type="text" class="form-control" placeholder="Validade promoção" ng-model="data.promotionValidity">
+							</div>
+							<div class="form-group" ng-class="{ 'has-error': getError('unit') }">
+						    <label class="control-label">Unidade</label>
+						    <input type="text" class="form-control" placeholder="Unidade" ng-model="data.unit">
+						  </div>
+						  <div class="form-group" ng-class="{ 'has-error': getError('type') }">
+						    <label class="control-label">Tipo</label>
+						    <select class="form-control" ng-model="data.type">
+						    	<option value="Produto">Produto</option>
+						    	<option value="Serviço">Serviço</option>
+						    </select>
+						  </div>
+						  <div class="form-group" ng-class="{ 'has-error': getError('typeProduct') }">
+						    <label class="control-label">Tipo do produto</label>
+						    <select class="form-control" ng-model="data.typeProduct">
+						    	<option value="qtd">Quantidade</option>
+						    	<option value="vlr">Valor</option>
+						    </select>
+						  </div>
+						</div>
+						<div class="col-sm-3">
+							<div class="form-group" ng-class="{ 'has-error': getError('commission') }">
+						    <label class="control-label">Comissão</label>
+						    <input type="text" class="form-control" placeholder="Comissão" ng-model="data.commission">
+						  </div>
+						  <div class="form-group" ng-class="{ 'has-error': getError('stockMin') }">
+						    <label class="control-label">Estoque mínimo</label>
+						    <input type="text" class="form-control" placeholder="Estoque mínimo" ng-model="data.stockMin">
+						  </div>
+						  <div class="form-group" ng-class="{ 'has-error': getError('stockMax') }">
+						    <label class="control-label">Estoque máximo</label>
+						    <input type="text" class="form-control" placeholder="Estoque máximo" ng-model="data.stockMax">
+						  </div>
+
+						</div>
+						<div class="col-sm-3">
+							<div class="form-group" ng-class="{ 'has-error': getError('price') }">
+						    <label class="control-label">Valor</label>
+						    <input type="text" class="form-control" placeholder="Valor" ng-model="data.price">
+						  </div>
+							<div class="form-group" ng-class="{ 'has-error': getError('priceSale') }">
+					    	<label class="control-label">Valor compra</label>
+					    	<input type="text" class="form-control" placeholder="Valor compra" ng-model="data.priceSale">
+							</div>
+							<div class="form-group" ng-class="{ 'has-error': getError('discount') }">
+						    <label class="control-label">Desconto</label>
+						    <input type="text" class="form-control" placeholder="Desconto" ng-model="data.discount">
+						  </div>
+							<div class="form-group" ng-class="{ 'has-error': getError('operationalCost') }">
+						    <label class="control-label">Custo operação</label>
+						    <input type="text" class="form-control" placeholder="Custo operação" ng-model="data.operationalCost">
+						  </div>
+						  <div class="form-group" ng-class="{ 'has-error': getError('lastIncrease') }">
+						    <label class="control-label">Último aumento</label>
+						    <input type="text" class="form-control" placeholder="Último aumento" ng-model="data.lastIncrease">
+						  </div>
+						</div>
+					</div>
+				</form>
+		  </div>
+		</div>
+	</div>
+	<div class="modal fade" tabindex="-1" role="dialog" id="modalProducts">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Produtos</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<input type="text" class="form-control" placeholder="Pesquisar" style="width: 300px" ng-model="modal.filter">
+	      	<br>
+	        <table class="table table-bordered table-condensed">
+	        	<thead>
+	        		<tr>
+	        			<th>Nome</th>
+	        			<th class="text-center" width="150px">Valor</th>
+	        			<th class="text-center" width="80px">Ações</th>
+	        		</tr>
+	        	</thead>
+	        	<tbody>
+	        		<tr dir-paginate="product in products | filter: modal.filter | itemsPerPage: '5'">
+	        			<td>[[product.name]]</td>
+	        			<td class="text-center" width="150px">[[product.price]]</td>
+	        			<td class="text-center" width="80px">
+	        				<button type="button" class="btn btn-primary btn-xs" ng-click="editProduct(product)">Editar</button>
+	        			</td>
+	        		</tr>
+	        	</tbody>
+	        </table>
+	        <div class="text-center">
+	        	<dir-pagination-controls template-url="app/templates/pagination.html"></dir-pagination-controls>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>
