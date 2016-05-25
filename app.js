@@ -3,13 +3,16 @@
 var express = require('express'),
     path = require('path'),
     logger = require('morgan'),
+    compression = require('compression'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     swig = require('swig'),
     mongoose = require('./config/database'),
    	passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy,
     service = require('./services/service'),
+    expressSession = require('express-session'),
+    RedisStore = require('connect-redis')(expressSession),
+    LocalStrategy = require('passport-local').Strategy,
     User = require('./models/user');
 
 var routes = require('./routes/index'),
@@ -20,6 +23,7 @@ var routes = require('./routes/index'),
     app = express();
 
 // Configuration
+app.use(compression());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,11 +31,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/')));
 
 // Passport
-app.use(require('express-session')({
-  secret: 'secret-key',
-  resave: false,
-  saveUninitialized: false
-}));
+app.use(expressSession({ store: new RedisStore({
+  host: '127.0.0.1',
+  port: 6379
+}), secret: 'secret-key' }));
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));

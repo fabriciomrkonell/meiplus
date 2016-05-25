@@ -1,0 +1,1 @@
+Instalação Redis -> https://codeforgeek.com/2015/07/using-redis-to-handle-session-in-node-js/
