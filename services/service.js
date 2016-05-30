@@ -10,5 +10,14 @@ module.exports = {
 	},
 	isNullOrEmpty: function(a){
   	return (a == null) || (a == "") || !!(a.match(/^\s+$/));
+	},
+	getYear: function(date){
+  	return date.substr(4,4);
+	},
+	getMonth: function(date){
+  	return date.substr(2,2);
+	},
+	getDay: function(date){
+  	return date.substr(0,2);
 	}
 };

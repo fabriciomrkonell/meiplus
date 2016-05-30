@@ -15,6 +15,9 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   Product.findById(req.body._id, function(err, product) {
+    var promotionValidity = req.body.promotionValidity || '',
+        lastIncrease = req.body.lastIncrease || '',
+        defaultValueDateLength = 8;
     if(product === null){
       product = new Product();
       product.userId = req.user._id;
@@ -28,7 +31,7 @@ router.post('/', function(req, res, next) {
     product.typeProduct = req.body.typeProduct;
     product.barCode = req.body.barCode;
     product.commission = req.body.commission;
-    product.promotion = req.body.promotion
+    product.promotion = req.body.promotion;
     product.price = req.body.price;
     product.pricePromotion = req.body.pricePromotion;
     product.priceSale = req.body.priceSale;
@@ -36,8 +39,12 @@ router.post('/', function(req, res, next) {
     product.discount = req.body.discount;
     product.stockMin = req.body.stockMin;
     product.stockMax = req.body.stockMax;
-    product.lastIncrease = req.body.lastIncrease;
-    product.promotionValidity = req.body.promotionValidity;
+    if(lastIncrease.length === defaultValueDateLength){
+      product.lastIncrease = new Date(service.getYear(lastIncrease), service.getMonth(lastIncrease), service.getDay(lastIncrease));
+    }
+    if(promotionValidity.length === defaultValueDateLength){
+      product.promotionValidity = new Date();
+    }
     product.participantId = req.body.participantId;
     product.save(function(err){
       if(err){

@@ -32,7 +32,7 @@ router.post('/', function(req, res, next) {
     participant.nickname = req.body.nickname;
     participant.email = req.body.email;
     participant.phone = req.body.phone;
-    participant.cnpj = req.body.cnpj
+    participant.cnpj = req.body.cnpj;
     participant.stateRegistration = req.body.stateRegistration;
     participant.cep = req.body.cep;
     participant.street = req.body.street;

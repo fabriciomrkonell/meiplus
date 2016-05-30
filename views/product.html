@@ -58,7 +58,7 @@
 							</div>
 							<div class="form-group" ng-class="{ 'has-error': getError('pricePromotion') }">
 					    	<label class="control-label">Validade promoção</label>
-					    	<input type="text" class="form-control" placeholder="Validade promoção" ng-model="data.promotionValidity">
+					    	<input type="text" class="form-control" placeholder="Validade promoção dd/mm/aaaa" ng-model="data.promotionValidity" restrict="reject" clean="true" mask="39/19/9999">
 							</div>
 							<div class="form-group" ng-class="{ 'has-error': getError('unit') }">
 						    <label class="control-label">Unidade</label>
@@ -113,7 +113,7 @@
 						  </div>
 						  <div class="form-group" ng-class="{ 'has-error': getError('lastIncrease') }">
 						    <label class="control-label">Último aumento</label>
-						    <input type="text" class="form-control" placeholder="Último aumento" ng-model="data.lastIncrease">
+						    <input type="text" class="form-control" placeholder="Último aumento dd/mm/aaaa" ng-model="data.lastIncrease" restrict="reject" clean="true" mask="39/19/9999">
 						  </div>
 						</div>
 					</div>

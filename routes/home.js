@@ -27,4 +27,12 @@ router.get('/produtos', function(req, res, next) {
   });
 });
 
+router.get('/imobilizados', function(req, res, next) {
+  res.render('layouts/default', {
+    title: 'Imobilizados',
+    page: '../property.html',
+    requiresJS: ['app/controllers/property']
+  });
+});
+
 module.exports = router;
