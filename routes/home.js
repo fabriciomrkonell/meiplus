@@ -35,4 +35,12 @@ router.get('/imobilizados', function(req, res, next) {
   });
 });
 
+router.get('/plano-de-contas', function(req, res, next) {
+  res.render('layouts/default', {
+    title: 'Imobilizados',
+    page: '../chartAccount.html',
+    requiresJS: ['app/controllers/chartAccount']
+  });
+});
+
 module.exports = router;

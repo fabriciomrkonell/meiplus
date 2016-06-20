@@ -1,0 +1,75 @@
+<link rel="stylesheet" type="text/css" href="app/dist/css/chartAccount.css">
+<div ng-controller="chartAccountCtrl">
+	<div class="col-sm-12">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		  	<span>Plano de contas</span>
+		  	<button type="button" class="btn btn-primary" ng-click="saveChartAccount(data)">
+		  		<i class="glyphicon glyphicon-ok"></i>&nbsp;
+		  		Salvar
+		  	</button>
+		  	<button type="button" class="btn btn-primary" ng-click="searchChartAccounts()" style="margin-right: 10px">
+		  		<i class="glyphicon glyphicon-search"></i>&nbsp;
+		  		Pesquisar
+		  	</button>
+		  	<button type="button" class="btn btn-primary" ng-click="clear()" style="margin-right: 10px">
+		  		<i class="glyphicon glyphicon-plus"></i>&nbsp;
+		  		Novo
+		  	</button>
+		  </div>
+		  <div class="panel-body panel-no-padding-bottom">
+		    <form>
+		    	<div class="row">
+			    	<div class="col-sm-3">
+							<div class="form-group" ng-class="{ 'has-error': getError('planeReference') }">
+					    	<label class="control-label">Plano referência</label>
+					    	<select class="form-control" ng-model="data.planeReference">
+						    	<option ng-repeat="accountingAccount in accountingAccounts" value="[[accountingAccount.id]]">[[accountingAccount.name]]</option>
+						    </select>
+							</div>
+							<div class="form-group" ng-class="{ 'has-error': getError('description') }">
+						    <label class="control-label">Descrição</label>
+						    <input type="text" class="form-control" placeholder="Descrição" ng-model="data.description">
+						  </div>
+						</div>
+					</div>
+				</form>
+		  </div>
+		</div>
+	</div>
+	<div class="modal fade" tabindex="-1" role="dialog" id="modalChartAccounts">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Plano de contas</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<input type="text" class="form-control" placeholder="Pesquisar" style="width: 300px" ng-model="modal.filter">
+	      	<br>
+	        <table class="table table-bordered table-condensed">
+	        	<thead>
+	        		<tr>
+	        			<th>Referência</th>
+	        			<th>Descrição</th>
+	        			<th class="text-center" width="80px">Ações</th>
+	        		</tr>
+	        	</thead>
+	        	<tbody>
+	        		<tr dir-paginate="chartAccount in chartAccounts | filter: modal.filter | itemsPerPage: '5'">
+	        			<td>[[getNamePlaneReference(chartAccount.planeReference)]]</td>
+	        			<td>[[chartAccount.description]]</td>
+	        			<td class="text-center" width="80px">
+	        				<button type="button" class="btn btn-primary btn-xs" ng-click="editChartAccount(chartAccount)">Editar</button>
+	        			</td>
+	        		</tr>
+	        	</tbody>
+	        </table>
+	        <div class="text-center">
+	        	<dir-pagination-controls template-url="app/templates/pagination.html"></dir-pagination-controls>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>

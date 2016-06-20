@@ -20,6 +20,7 @@ var routes = require('./routes/index'),
 		routes_profile = require('./routes/profile'),
     routes_participant = require('./routes/participant'),
     routes_product = require('./routes/product'),
+    routes_chartAccount = require('./routes/chartAccount'),
     routes_property = require('./routes/property'),
     routes_accountingAccount = require('./routes/accountingAccount'),
     app = express();
@@ -58,6 +59,7 @@ app.use('/app/perfil', service.isAutenticate, routes_profile);
 app.use('/app/participant', service.isAutenticate, routes_participant);
 app.use('/app/product', service.isAutenticate, routes_product);
 app.use('/app/property', service.isAutenticate, routes_property);
+app.use('/app/chart-account', service.isAutenticate, routes_chartAccount);
 app.use('/app/accounting-account', service.isAutenticate, routes_accountingAccount);
 
 module.exports = app;
